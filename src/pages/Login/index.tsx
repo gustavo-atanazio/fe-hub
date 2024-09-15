@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
@@ -10,10 +13,43 @@ import Fade from 'embla-carousel-fade';
 
 import { FcGoogle } from 'react-icons/fc';
 
-import car1 from '../../assets/img/car_1.jpg';
-import car2 from '../../assets/img/car_2.jpg';
+import { useUserContext } from '@/context/User';
+import { getFromLocalStorage, postToLocalStorage } from '@/utils/localStorage';
+
+import car1 from '@/assets/img/car_1.jpg';
+import car2 from '@/assets/img/car_2.jpg';
 
 function Login() {
+  const navigate = useNavigate();
+  const { setEmail, setPassword, setName } = useUserContext();
+
+  const [email, setEmailField] = useState('');
+  const [password, setPasswordField] = useState('');
+  const [name, setNameField] = useState('');
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setEmail(email);
+    setPassword(password);
+    setName(name);
+
+    postToLocalStorage('USER_EMAIL', email);
+    postToLocalStorage('USER_PASSWORD', password);
+    postToLocalStorage('USER_NAME', name);
+
+    postToLocalStorage('isLoggedIn', true);
+    navigate('/');
+  }
+
+  useEffect(() => {
+    const userEmail = getFromLocalStorage('USER_EMAIL');
+    const userPassword = getFromLocalStorage('USER_PASSWORD');
+    const userName = getFromLocalStorage('USER_NAME');
+
+    if (userEmail && userPassword && userName) navigate('/');
+  });
+
   return (
     <main className='w-full h-screen flex'>
       <div className='hidden md:block bg-primary-foreground w-full h-full'>
@@ -53,20 +89,41 @@ function Login() {
           </CardHeader>
 
           <CardContent>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div>
                 <Label htmlFor='email'>E-mail</Label>
-                <Input id='email' placeholder='exemplo@email.com' type='email'/>
+                <Input
+                  id='email'
+                  placeholder='exemplo@email.com'
+                  type='email'
+                  value={email}
+                  onChange={e => setEmailField(e.target.value)}
+                  required
+                />
               </div>
 
               <div className='mt-4'>
                 <Label htmlFor='password'>Senha</Label>
-                <Input id='password' placeholder='1234' type='password'/>
+                <Input
+                  id='password'
+                  placeholder='Sua senha'
+                  type='password'
+                  value={password}
+                  onChange={e => setPasswordField(e.target.value)}
+                  required
+                />
               </div>
 
               <div className='mt-4'>
                 <Label htmlFor='username'>Nome de usuário</Label>
-                <Input id='username' placeholder='Ex.: Fulano da Silva' type='text'/>
+                <Input
+                  id='username'
+                  placeholder='Seu nome'
+                  type='text'
+                  value={name}
+                  onChange={e => setNameField(e.target.value)}
+                  required
+                />
               </div>
 
               <Button className='mt-6 w-full' type='submit'>
