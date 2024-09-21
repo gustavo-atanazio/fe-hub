@@ -1,8 +1,9 @@
 import { Outlet } from 'react-router-dom';
+import { ModeToggle } from '@/components/ui/mode-toggle';
 import MobileNav from '@/components/MobileNav';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
-import { ModeToggle } from '@/components/ui/mode-toggle';
+import Grid from '@/components/Grid';
 
 function Layout() {
   return (
@@ -25,7 +26,9 @@ function Layout() {
         <Header/>
 
         <main className='p-4'>
-          <Outlet/>
+          <Grid>
+            <Outlet/>
+          </Grid>
         </main>
       </div>
     </div>
