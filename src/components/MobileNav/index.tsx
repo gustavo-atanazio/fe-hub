@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
-
 import { LogOut, Menu } from 'lucide-react';
+
+import { useUserContext } from '@/context/User';
 import LINKS from '@/constants/links';
 
 function MobileNav() {
+  const { name } = useUserContext();
+  
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -21,14 +25,18 @@ function MobileNav() {
       </SheetTrigger>
 
       <SheetContent side='left' className='flex flex-col'>
-        <nav className='grid gap-2 text-lg font-medium'>
-          <Link
-            to='/'
-            className='flex items-center gap-2 text-lg font-semibold'
-          >
-            <span>FE Hub</span>
-          </Link>
+        <div className='flex gap-4 items-center'>
+          <Avatar>
+            <AvatarImage src=''/>
+            <AvatarFallback>TE</AvatarFallback>
+          </Avatar>
 
+          <span className='max-w-full truncate whitespace-nowrap overflow-hidden'>
+            {name}
+          </span>
+        </div>
+
+        <nav className='grid gap-2 text-lg font-medium'>
           {LINKS.map(({ route, Icon, text }) => (
             <Link
               to={route}
