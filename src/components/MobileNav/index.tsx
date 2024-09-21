@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 
-import { Home, LogOut, Menu } from 'lucide-react';
+import { LogOut, Menu } from 'lucide-react';
+import LINKS from '@/constants/links';
 
 function MobileNav() {
   return (
@@ -28,13 +29,15 @@ function MobileNav() {
             <span>FE Hub</span>
           </Link>
 
-          <Link
-            to='/'
-            className='mt-2 mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
-          >
-            <Home className='h-5 w-5'/>
-            Home
-          </Link>
+          {LINKS.map(({ route, Icon, text }) => (
+            <Link
+              to={route}
+              className='mt-2 mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground'
+            >
+              <Icon className='h-5 w-5'/>
+              {text}
+            </Link>
+          ))}
         </nav>
 
         <div className='mt-auto'>

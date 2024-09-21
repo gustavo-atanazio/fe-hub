@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
-import { HomeIcon, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
+import LINKS from '@/constants/links';
 
 function Sidebar() {
   return (
@@ -13,14 +14,16 @@ function Sidebar() {
         </div>
 
         <div className='flex-1'>
-          <nav className='grid items-start px-2 text-sm font-medium lg:px-4'>
-            <Link
-              to='/'
-              className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary'
-            >
-              <HomeIcon className='h-4 w-4'/>
-              Home
-            </Link>
+          <nav className='grid items-start gap-2 px-2 text-sm md:text-lg font-medium lg:px-4'>
+            {LINKS.map(({ route, Icon, text }) => (
+              <Link
+                to={route}
+                className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-muted/100'
+              >
+                <Icon className='h-6 w-6'/>
+                {text}
+              </Link>
+            ))}
           </nav>
         </div>
 
