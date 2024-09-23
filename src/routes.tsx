@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Noticies from './pages/Noticies';
 import Events from './pages/Events';
 import Live from './pages/Live';
+import NotFound from './pages/NotFound';
 
 import requireAuth from './utils/requireAuth';
 
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       { path: '/ao-vivo', element: <Live/> }
     ]
   },
-  { path: '/login', element: <Login/> }
+  { path: '/login', element: <Login/> },
+  { path: '*', element: <NotFound/> }
 ]);
 
 function Routes() { return <RouterProvider router={router}/>; }
