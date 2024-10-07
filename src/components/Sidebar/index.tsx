@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuIte
 import { LogOut } from 'lucide-react';
 
 import { useUserContext } from '@/context/User';
+import { nameInitials } from '@/utils/name';
 import LINKS from '@/constants/links';
 
 function Sidebar() {
@@ -21,7 +22,7 @@ function Sidebar() {
               <div className='flex items-center gap-2'>
                 <Avatar>
                   <AvatarImage src=''/>
-                  <AvatarFallback>TE</AvatarFallback>
+                  <AvatarFallback>{nameInitials(name)}</AvatarFallback>
                 </Avatar>
 
                 <span className='max-w-full truncate whitespace-nowrap overflow-hidden'>
@@ -48,12 +49,13 @@ function Sidebar() {
 
         <div className='flex-1'>
           <nav className='grid items-start gap-2 px-2 text-sm md:text-lg font-medium lg:px-4'>
-            {LINKS.map(({ route, Icon, text }) => (
+            {LINKS.map(({ route, Icon, text }, index) => (
               <Link
                 to={route}
                 className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-muted/100'
+                key={index}
               >
-                <Icon className='h-6 w-6' />
+                <Icon className='h-6 w-6'/>
                 {text}
               </Link>
             ))}
