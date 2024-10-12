@@ -8,7 +8,7 @@ import Events from './pages/Events';
 import Live from './pages/Live';
 import NotFound from './pages/NotFound';
 
-import requireAuth from './utils/requireAuth';
+import { requireAuth } from './utils/auth';
 
 const router = createBrowserRouter([
   {

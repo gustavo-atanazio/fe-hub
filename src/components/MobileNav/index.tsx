@@ -1,16 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LogOut, Menu } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
-import { LogOut, Menu } from 'lucide-react';
 
 import { useUserContext } from '@/context/User';
 import { nameInitials } from '@/utils/name';
 import LINKS from '@/constants/links';
 
 function MobileNav() {
-  const { name } = useUserContext();
+  const navigate = useNavigate();
+  const { name, logOut } = useUserContext();
   
   return (
     <Sheet>
@@ -51,7 +52,14 @@ function MobileNav() {
         </nav>
 
         <div className='mt-auto'>
-          <Button variant='outline' className='w-full p-5'>
+          <Button
+            className='w-full p-5'
+            variant='outline'
+            onClick={() => {
+              logOut();
+              navigate('/login');
+            }}
+          >
             <LogOut className='mr-4'/>
             Sair
           </Button>
