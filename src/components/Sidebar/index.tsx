@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { LogOut } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from '../ui/dropdown-menu';
-import { LogOut } from 'lucide-react';
 
 import { useUserContext } from '@/context/User';
 import { nameInitials } from '@/utils/name';
@@ -11,7 +11,7 @@ import LINKS from '@/constants/links';
 
 function Sidebar() {
   const navigate = useNavigate();
-  const { name } = useUserContext();
+  const { name, logOut } = useUserContext();
 
   return (
     <aside className='hidden border-r bg-muted/40 md:block h-full'>
@@ -63,8 +63,15 @@ function Sidebar() {
         </div>
 
         <div className='mt-auto p-4'>
-          <Button variant='outline' className='w-full p-5'>
-            <LogOut className='mr-4' />
+          <Button
+            className='w-full p-5'
+            variant='outline'
+            onClick={() => {
+              logOut();
+              navigate('/login');
+            }}
+          >
+            <LogOut className='mr-4'/>
             Sair
           </Button>
         </div>

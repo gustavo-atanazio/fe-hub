@@ -15,14 +15,14 @@ import Fade from 'embla-carousel-fade';
 import { FcGoogle } from 'react-icons/fc';
 
 import { useUserContext } from '@/context/User';
-import { getFromLocalStorage, postToLocalStorage } from '@/utils/localStorage';
+import { getFromLocalStorage } from '@/utils/localStorage';
 
 import car1 from '@/assets/img/car_1.jpg';
 import car2 from '@/assets/img/car_2.jpg';
 
 function Login() {
   const navigate = useNavigate();
-  const { setEmail, setPassword, setName } = useUserContext();
+  const { logged, setEmail, setPassword, setName, setLogged } = useUserContext();
 
   const [email, setEmailField] = useState('');
   const [password, setPasswordField] = useState('');
@@ -34,21 +34,16 @@ function Login() {
     setEmail(email);
     setPassword(password);
     setName(name);
-
-    postToLocalStorage('USER_EMAIL', email);
-    postToLocalStorage('USER_PASSWORD', password);
-    postToLocalStorage('USER_NAME', name);
-
-    postToLocalStorage('isLoggedIn', true);
-    navigate('/');
+    setLogged(true);
   }
 
   useEffect(() => {
-    const userEmail = getFromLocalStorage('USER_EMAIL');
-    const userPassword = getFromLocalStorage('USER_PASSWORD');
-    const userName = getFromLocalStorage('USER_NAME');
+    if (logged) navigate('/');
+  }, [logged]);
 
-    if (userEmail && userPassword && userName) navigate('/');
+  useEffect(() => {
+    const isLoggedIn = getFromLocalStorage('isLoggedIn') === true;
+    if (isLoggedIn) navigate('/');
   });
 
   return (
