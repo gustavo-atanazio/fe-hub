@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "husky"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
@@ -40,9 +41,14 @@
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.36.1",
     "globals": "^15.9.0",
+    "husky": "^9.1.6",
     "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "prettier-eslint": "^16.3.0",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.5.0",
