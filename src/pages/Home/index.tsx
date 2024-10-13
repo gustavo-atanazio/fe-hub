@@ -5,9 +5,7 @@ function Home() {
   return (
     <>
       <div className='flex flex-col gap-2 md:col-span-2 lg:col-span-3'>
-        <h2 className='text-2xl font-medium'>
-          Recentes
-        </h2>
+        <h2 className='text-2xl font-medium'>Recentes</h2>
 
         <div className='flex flex-col gap-4 md:max-h-full'>
           {recents.map(({ img, title, text }, index) => (
@@ -18,12 +16,8 @@ function Home() {
                 </div>
 
                 <div className='flex flex-col gap-1'>
-                  <h5 className='text-base font-semibold'>
-                    {title}
-                  </h5>
-                  <p className='text-xs line-clamp-3 md:line-clamp-4'>
-                    {text}
-                  </p>
+                  <h5 className='text-base font-semibold'>{title}</h5>
+                  <p className='text-xs line-clamp-3 md:line-clamp-4'>{text}</p>
                 </div>
               </CardContent>
             </Card>
@@ -32,16 +26,16 @@ function Home() {
       </div>
 
       <div className='flex flex-col gap-2'>
-        <h2 className='text-2xl font-medium text-center'>
-          Assuntos
-        </h2>
+        <h2 className='text-2xl font-medium text-center'>Assuntos</h2>
 
         <Card className='h-full'>
           <CardContent className='flex flex-col gap-2 p-4'>
             {topics.map(({ title, text }, index) => (
               <Card key={index}>
                 <CardContent className='flex flex-col gap-1 p-2'>
-                  <h4 className='text-base font-medium line-clamp-2'>{title}</h4>
+                  <h4 className='text-base font-medium line-clamp-2'>
+                    {title}
+                  </h4>
                   <p className='text-[12px] line-clamp-4'>{text}</p>
                 </CardContent>
               </Card>

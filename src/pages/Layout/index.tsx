@@ -12,9 +12,7 @@ function Layout() {
       <header className='p-4 md:hidden flex justify-between h-fit items-center'>
         <MobileNav/>
 
-        <h1 className='text-2xl font-bold'>
-          FE Hub
-        </h1>
+        <h1 className='text-2xl font-bold'>FE Hub</h1>
 
         <ModeToggle/>
       </header>

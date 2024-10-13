@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Autoplay from 'embla-carousel-autoplay';
+import Fade from 'embla-carousel-fade';
+import { FcGoogle } from 'react-icons/fc';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import {Carousel, CarouselContent, CarouselItem} from '@/components/ui/carousel';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import { Separator } from '@/components/ui/separator';
-
-import Autoplay from 'embla-carousel-autoplay';
-import Fade from 'embla-carousel-fade';
-
-import { FcGoogle } from 'react-icons/fc';
 
 import { useUserContext } from '@/context/User';
 import { getFromLocalStorage } from '@/utils/localStorage';
@@ -51,21 +49,26 @@ function Login() {
       <div className='hidden md:block bg-primary-foreground w-full h-full'>
         <Carousel
           className='w-full h-full'
-          plugins={[
-            Autoplay({ delay: 3500 }),
-            Fade()
-          ]}
+          plugins={[Autoplay({ delay: 3500 }), Fade()]}
         >
           <CarouselContent className='h-full'>
             <CarouselItem className='h-full'>
               <div className='h-full'>
-                <img src={car1} className='object-cover w-full h-full' alt='Carro 1' />
+                <img
+                  src={car1}
+                  className='object-cover w-full h-full'
+                  alt='Carro 1'
+                />
               </div>
             </CarouselItem>
 
             <CarouselItem className='h-full'>
               <div className='h-full'>
-                <img src={car2} className='object-cover w-full h-full' alt='Carro 2' />
+                <img
+                  src={car2}
+                  className='object-cover w-full h-full'
+                  alt='Carro 2'
+                />
               </div>
             </CarouselItem>
           </CarouselContent>
@@ -78,9 +81,7 @@ function Login() {
         </div>
 
         <div className='max-w-md flex flex-col gap-10'>
-          <h1 className='self-start font-bold text-6xl'>
-            FE Hub
-          </h1>
+          <h1 className='self-start font-bold text-6xl'>FE Hub</h1>
 
           <Card className='w-full'>
             <CardHeader>
@@ -150,7 +151,8 @@ function Login() {
 
             <CardFooter>
               <p className='text-muted-foreground text-center text-sm'>
-                Ao entrar em nossa plataforma, você concorda com nossos Termos de Uso e Política de Privacidade.
+                Ao entrar em nossa plataforma, você concorda com nossos Termos
+                de Uso e Política de Privacidade.
               </p>
             </CardFooter>
           </Card>
