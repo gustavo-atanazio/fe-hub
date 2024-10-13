@@ -15,10 +15,14 @@ type UserContext = {
 };
 
 const defaultValue: UserContext = {
-  email: '', setEmail: () => null,
-  password: '', setPassword: () => null,
-  name: '', setName: () => null,
-  logged: false, setLogged: () => null,
+  email: '',
+  setEmail: () => null,
+  password: '',
+  setPassword: () => null,
+  name: '',
+  setName: () => null,
+  logged: false,
+  setLogged: () => null,
   logOut: () => null
 };
 
@@ -43,18 +47,18 @@ function UserContextProvider({ children }: { children: React.ReactNode }) {
   }
 
   const value = {
-    email, setEmail,
-    password, setPassword,
-    name, setName,
-    logged, setLogged,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    name,
+    setName,
+    logged,
+    setLogged,
     logOut
   };
 
-  return (
-    <UserContext.Provider value={value}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
 
 function useUserContext() { return useContext(UserContext); }

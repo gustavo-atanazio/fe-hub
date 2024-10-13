@@ -6,6 +6,7 @@ function getFromLocalStorage(key: string): any | null {
   const data = localStorage.getItem(key);
 
   if (data) return JSON.parse(data);
+
   return null;
 }
 

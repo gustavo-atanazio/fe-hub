@@ -7,9 +7,7 @@ function NotFound() {
 
   return (
     <div className='w-screen h-screen flex flex-col justify-center items-center gap-8'>
-      <h1 className='text-3xl font-bold'>
-        Página não encontrada
-      </h1>
+      <h1 className='text-3xl font-bold'>Página não encontrada</h1>
 
       <img
         className='max-w-[50%] md:max-w-80'
@@ -19,10 +17,7 @@ function NotFound() {
 
       <p>Que tal voltar onde estava?</p>
 
-      <Button
-        className='w-2/6 md:w-32'
-        onClick={() => navigate(-1)}
-      >
+      <Button className='w-2/6 md:w-32' onClick={() => navigate(-1)}>
         Voltar
       </Button>
     </div>
