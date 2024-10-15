@@ -46,7 +46,7 @@ function Login() {
   });
 
   return (
-    <main className='w-full min-h-screen flex md:h-screen'>
+    <main className='w-full min-h-dvh flex md:h-screen'>
       <div className='hidden md:block bg-primary-foreground w-full h-full'>
         <Carousel
           className='w-full h-full'
@@ -76,12 +76,12 @@ function Login() {
         </Carousel>
       </div>
 
-      <section className='relative w-full max-w-3xl h-full bg-background p-8 md:p-4 flex flex-col items-center justify-center'>
+      <section className='relative w-full max-w-3xl h-full bg-background p-8 md:p-4 flex flex-col items-center justify-center py-4 px-6'>
         <div className='absolute top-8 right-8'>
           <ModeToggle/>
         </div>
 
-        <div className='max-w-md flex flex-col gap-10'>
+        <div className='max-w-md flex flex-col gap-4 md:gap-10'>
           <h1 className={`self-start font-bold text-6xl ${styles.highlight}`}>FE Hub</h1>
 
           <Card className='w-full'>
