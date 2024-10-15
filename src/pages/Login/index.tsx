@@ -17,6 +17,7 @@ import { getFromLocalStorage } from '@/utils/localStorage';
 
 import car1 from '@/assets/img/car_1.jpg';
 import car2 from '@/assets/img/car_2.jpg';
+import styles from './Login.module.css';
 
 function Login() {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ function Login() {
   });
 
   return (
-    <main className='w-full h-screen flex'>
+    <main className='w-full min-h-screen flex md:h-screen'>
       <div className='hidden md:block bg-primary-foreground w-full h-full'>
         <Carousel
           className='w-full h-full'
@@ -81,7 +82,7 @@ function Login() {
         </div>
 
         <div className='max-w-md flex flex-col gap-10'>
-          <h1 className='self-start font-bold text-6xl'>FE Hub</h1>
+          <h1 className={`self-start font-bold text-6xl ${styles.highlight}`}>FE Hub</h1>
 
           <Card className='w-full'>
             <CardHeader>
