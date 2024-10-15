@@ -6,11 +6,11 @@
 .highlight {
   background: linear-gradient(
     45deg,
-    rgb(28, 20, 102) 0%,
-    rgb(33, 25, 140) 25%,
-    rgb(25, 45, 214) 50%,
-    rgb(33, 25, 140) 75%,
-    rgb(28, 20, 102) 100%
+    rgb(20, 30, 150) 0%,
+    rgb(30, 70, 200) 25%,
+    rgb(60, 120, 255) 50%,
+    rgb(30, 70, 200) 75%,
+    rgb(20, 30, 150) 100%
   );
   background-size: 400% 100%;
   animation: gradient 10s linear infinite alternate;
