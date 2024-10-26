@@ -1,11 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
+
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Button } from '../ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from '../ui/dropdown-menu';
+
 import { useUserContext } from '@/context/User';
 import { nameInitials } from '@/utils/name';
 import LINKS from '@/constants/links';
-import {Avatar, AvatarFallback, AvatarImage} from '../ui/avatar';
-import { Button } from '../ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from '../ui/dropdown-menu';
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -38,7 +40,12 @@ function Sidebar() {
                 Configurações
               </DropdownMenuItem>
 
-              <DropdownMenuItem>Sair</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => {
+                logOut();
+                navigate('/login');
+              }}>
+                Sair
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
