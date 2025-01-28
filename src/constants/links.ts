@@ -1,6 +1,7 @@
-import { HomeIcon, Radio, CalendarDays, Newspaper } from 'lucide-react';
+import { HomeIcon, Radio, CalendarDays, Newspaper, Store } from 'lucide-react';
+import Link from '@/types/Link';
 
-const LINKS = [
+const LINKS: Link[] = [
   {
     route: '/',
     Icon: HomeIcon,
@@ -20,6 +21,12 @@ const LINKS = [
     route: '/ao-vivo',
     Icon: Radio,
     text: 'Ao vivo'
+  },
+  {
+    route: '/loja',
+    Icon: Store,
+    text: 'Loja',
+    mobileOnly: true
   }
 ];
 

@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Button } from '../ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from '../ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
 import { useUserContext } from '@/context/User';
 import { nameInitials } from '@/utils/name';
@@ -52,7 +53,7 @@ function Sidebar() {
 
         <div className='flex-1'>
           <nav className='grid items-start gap-2 px-2 text-sm md:text-lg font-medium lg:px-4'>
-            {LINKS.map(({ route, Icon, text }, index) => (
+            {LINKS.filter(({ mobileOnly }) => !mobileOnly).map(({ route, Icon, text }, index) => (
               <Link
                 to={route}
                 className='flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-muted/100'
@@ -83,4 +84,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default memo(Sidebar);
